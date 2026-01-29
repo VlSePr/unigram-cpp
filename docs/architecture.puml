@@ -1,0 +1,92 @@
+@startuml Unigram Tokenizer Core Architecture
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam componentStyle uml2
+
+title Unigram Tokenizer - Core Library & Data Models
+
+' Core Library Components
+package "Core Library (C++20)" {
+    
+    [Types] <<Header>> #LightBlue
+    note right of [Types]
+        Common types & configuration
+        - TokenId (uint32_t)
+        - Token (string)
+        - Score (double)
+        - TokenizerConfig
+    end note
+
+    [Vocabulary] <<PIMPL>> #LightGreen
+    note right of [Vocabulary]
+        Token ↔ ID mapping
+        - Bidirectional lookup
+        - Score storage
+        - Special tokens (UNK, BOS, EOS, PAD)
+        - JSON serialization
+    end note
+
+    [Tokenizer] <<PIMPL>> #LightGreen
+    note right of [Tokenizer]
+        Main tokenization engine
+        - Viterbi decoding algorithm
+        - Dynamic programming
+        - UTF-8 support
+        - Optimal segmentation
+    end note
+
+    [Trainer] <<PIMPL>> #LightGreen
+    note right of [Trainer]
+        EM Training Algorithm
+        - E-step: Expected counts
+        - M-step: Update probabilities
+        - Vocabulary pruning
+        - Multi-file training
+        - Progress callbacks
+    end note
+
+    package "Internal Utilities" {
+        [UTF8Utils] #LightYellow
+        note bottom of [UTF8Utils]
+            - UTF-8 validation
+            - Character boundary detection
+            - Text preprocessing
+        end note
+    }
+}
+
+' Data & Models
+database "Data & Models" {
+    folder "Training Data" {
+        [Text Corpus]
+    }
+    folder "Model Files" {
+        [Vocabulary JSON]
+    }
+}
+
+' Relationships - Core Components
+[Types] -down-> [Vocabulary] : defines types
+[Types] -down-> [Tokenizer] : defines types
+[Types] -down-> [Trainer] : defines types
+
+[Tokenizer] -down-> [Vocabulary] : uses
+[Tokenizer] -down-> [UTF8Utils] : uses
+[Trainer] -down-> [Tokenizer] : creates & trains
+[Trainer] -down-> [Vocabulary] : manages
+[Trainer] -down-> [UTF8Utils] : uses
+
+' Relationships - Data
+[Trainer] .up.> [Text Corpus] : reads
+[Trainer] .up.> [Vocabulary JSON] : saves
+[Tokenizer] .up.> [Vocabulary JSON] : loads
+[Vocabulary] .up.> [Vocabulary JSON] : serializes to/from
+
+' Legend
+legend right
+    |<back:#LightGreen> PIMPL Pattern </back>| Main classes with encapsulated implementation
+    |<back:#LightBlue> Header Only </back>| Type definitions and configurations
+    |<back:#LightYellow> Internal </back>| Internal utility classes
+endlegend
+
+@enduml

@@ -1,0 +1,1932 @@
+{
+  "version": "1.0.0",
+  "vocab_size": 353,
+  "vocabulary": [
+    {
+      "id": 0,
+      "score": 0.0,
+      "token": "<unk>"
+    },
+    {
+      "id": 1,
+      "score": 0.0,
+      "token": "<s>"
+    },
+    {
+      "id": 2,
+      "score": 0.0,
+      "token": "</s>"
+    },
+    {
+      "id": 3,
+      "score": 0.0,
+      "token": "<pad>"
+    },
+    {
+      "id": 4,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x00>"
+    },
+    {
+      "id": 5,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x01>"
+    },
+    {
+      "id": 6,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x02>"
+    },
+    {
+      "id": 7,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x03>"
+    },
+    {
+      "id": 8,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x04>"
+    },
+    {
+      "id": 9,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x05>"
+    },
+    {
+      "id": 10,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x06>"
+    },
+    {
+      "id": 11,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x07>"
+    },
+    {
+      "id": 12,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x08>"
+    },
+    {
+      "id": 13,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x09>"
+    },
+    {
+      "id": 14,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x0A>"
+    },
+    {
+      "id": 15,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x0B>"
+    },
+    {
+      "id": 16,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x0C>"
+    },
+    {
+      "id": 17,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x0D>"
+    },
+    {
+      "id": 18,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x0E>"
+    },
+    {
+      "id": 19,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x0F>"
+    },
+    {
+      "id": 20,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x10>"
+    },
+    {
+      "id": 21,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x11>"
+    },
+    {
+      "id": 22,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x12>"
+    },
+    {
+      "id": 23,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x13>"
+    },
+    {
+      "id": 24,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x14>"
+    },
+    {
+      "id": 25,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x15>"
+    },
+    {
+      "id": 26,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x16>"
+    },
+    {
+      "id": 27,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x17>"
+    },
+    {
+      "id": 28,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x18>"
+    },
+    {
+      "id": 29,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x19>"
+    },
+    {
+      "id": 30,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x1A>"
+    },
+    {
+      "id": 31,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x1B>"
+    },
+    {
+      "id": 32,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x1C>"
+    },
+    {
+      "id": 33,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x1D>"
+    },
+    {
+      "id": 34,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x1E>"
+    },
+    {
+      "id": 35,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x1F>"
+    },
+    {
+      "id": 36,
+      "score": -4.892918045749524,
+      "token": " "
+    },
+    {
+      "id": 37,
+      "score": -15.0,
+      "token": "!"
+    },
+    {
+      "id": 38,
+      "score": -15.0,
+      "token": "\""
+    },
+    {
+      "id": 39,
+      "score": -6.738744736247855,
+      "token": "#"
+    },
+    {
+      "id": 40,
+      "score": -15.0,
+      "token": "$"
+    },
+    {
+      "id": 41,
+      "score": -15.0,
+      "token": "%"
+    },
+    {
+      "id": 42,
+      "score": -15.0,
+      "token": "&"
+    },
+    {
+      "id": 43,
+      "score": -15.0,
+      "token": "'"
+    },
+    {
+      "id": 44,
+      "score": -15.0,
+      "token": "("
+    },
+    {
+      "id": 45,
+      "score": -15.0,
+      "token": ")"
+    },
+    {
+      "id": 46,
+      "score": -15.0,
+      "token": "*"
+    },
+    {
+      "id": 47,
+      "score": -15.0,
+      "token": "+"
+    },
+    {
+      "id": 48,
+      "score": -15.0,
+      "token": ","
+    },
+    {
+      "id": 49,
+      "score": -15.0,
+      "token": "-"
+    },
+    {
+      "id": 50,
+      "score": -6.921066293041809,
+      "token": "."
+    },
+    {
+      "id": 51,
+      "score": -15.0,
+      "token": "/"
+    },
+    {
+      "id": 52,
+      "score": -15.0,
+      "token": "0"
+    },
+    {
+      "id": 53,
+      "score": -15.0,
+      "token": "1"
+    },
+    {
+      "id": 54,
+      "score": -15.0,
+      "token": "2"
+    },
+    {
+      "id": 55,
+      "score": -15.0,
+      "token": "3"
+    },
+    {
+      "id": 56,
+      "score": -15.0,
+      "token": "4"
+    },
+    {
+      "id": 57,
+      "score": -15.0,
+      "token": "5"
+    },
+    {
+      "id": 58,
+      "score": -15.0,
+      "token": "6"
+    },
+    {
+      "id": 59,
+      "score": -15.0,
+      "token": "7"
+    },
+    {
+      "id": 60,
+      "score": -15.0,
+      "token": "8"
+    },
+    {
+      "id": 61,
+      "score": -15.0,
+      "token": "9"
+    },
+    {
+      "id": 62,
+      "score": -15.0,
+      "token": ":"
+    },
+    {
+      "id": 63,
+      "score": -15.0,
+      "token": ";"
+    },
+    {
+      "id": 64,
+      "score": -15.0,
+      "token": "<"
+    },
+    {
+      "id": 65,
+      "score": -15.0,
+      "token": "="
+    },
+    {
+      "id": 66,
+      "score": -15.0,
+      "token": ">"
+    },
+    {
+      "id": 67,
+      "score": -15.0,
+      "token": "?"
+    },
+    {
+      "id": 68,
+      "score": -15.0,
+      "token": "@"
+    },
+    {
+      "id": 69,
+      "score": -15.0,
+      "token": "A"
+    },
+    {
+      "id": 70,
+      "score": -15.0,
+      "token": "B"
+    },
+    {
+      "id": 71,
+      "score": -15.0,
+      "token": "C"
+    },
+    {
+      "id": 72,
+      "score": -15.0,
+      "token": "D"
+    },
+    {
+      "id": 73,
+      "score": -15.0,
+      "token": "E"
+    },
+    {
+      "id": 74,
+      "score": -15.0,
+      "token": "F"
+    },
+    {
+      "id": 75,
+      "score": -15.0,
+      "token": "G"
+    },
+    {
+      "id": 76,
+      "score": -15.0,
+      "token": "H"
+    },
+    {
+      "id": 77,
+      "score": -15.0,
+      "token": "I"
+    },
+    {
+      "id": 78,
+      "score": -15.0,
+      "token": "J"
+    },
+    {
+      "id": 79,
+      "score": -15.0,
+      "token": "K"
+    },
+    {
+      "id": 80,
+      "score": -15.0,
+      "token": "L"
+    },
+    {
+      "id": 81,
+      "score": -15.0,
+      "token": "M"
+    },
+    {
+      "id": 82,
+      "score": -15.0,
+      "token": "N"
+    },
+    {
+      "id": 83,
+      "score": -15.0,
+      "token": "O"
+    },
+    {
+      "id": 84,
+      "score": -15.0,
+      "token": "P"
+    },
+    {
+      "id": 85,
+      "score": -15.0,
+      "token": "Q"
+    },
+    {
+      "id": 86,
+      "score": -15.0,
+      "token": "R"
+    },
+    {
+      "id": 87,
+      "score": -15.0,
+      "token": "S"
+    },
+    {
+      "id": 88,
+      "score": -15.0,
+      "token": "T"
+    },
+    {
+      "id": 89,
+      "score": -15.0,
+      "token": "U"
+    },
+    {
+      "id": 90,
+      "score": -15.0,
+      "token": "V"
+    },
+    {
+      "id": 91,
+      "score": -15.0,
+      "token": "W"
+    },
+    {
+      "id": 92,
+      "score": -15.0,
+      "token": "X"
+    },
+    {
+      "id": 93,
+      "score": -15.0,
+      "token": "Y"
+    },
+    {
+      "id": 94,
+      "score": -15.0,
+      "token": "Z"
+    },
+    {
+      "id": 95,
+      "score": -15.0,
+      "token": "["
+    },
+    {
+      "id": 96,
+      "score": -15.0,
+      "token": "\\"
+    },
+    {
+      "id": 97,
+      "score": -15.0,
+      "token": "]"
+    },
+    {
+      "id": 98,
+      "score": -15.0,
+      "token": "^"
+    },
+    {
+      "id": 99,
+      "score": -15.0,
+      "token": "_"
+    },
+    {
+      "id": 100,
+      "score": -15.0,
+      "token": "`"
+    },
+    {
+      "id": 101,
+      "score": -3.6706918011142378,
+      "token": "a"
+    },
+    {
+      "id": 102,
+      "score": -7.431891916807801,
+      "token": "b"
+    },
+    {
+      "id": 103,
+      "score": -6.738744736247855,
+      "token": "c"
+    },
+    {
+      "id": 104,
+      "score": -6.584594056420596,
+      "token": "d"
+    },
+    {
+      "id": 105,
+      "score": -5.1982996953007055,
+      "token": "e"
+    },
+    {
+      "id": 106,
+      "score": -7.144209844356019,
+      "token": "f"
+    },
+    {
+      "id": 107,
+      "score": -6.4510626637960735,
+      "token": "g"
+    },
+    {
+      "id": 108,
+      "score": -7.144209844356019,
+      "token": "h"
+    },
+    {
+      "id": 109,
+      "score": -5.485981767752487,
+      "token": "i"
+    },
+    {
+      "id": 110,
+      "score": -15.0,
+      "token": "j"
+    },
+    {
+      "id": 111,
+      "score": -7.837357024915964,
+      "token": "k"
+    },
+    {
+      "id": 112,
+      "score": -6.04559755568791,
+      "token": "l"
+    },
+    {
+      "id": 113,
+      "score": -6.333279628139691,
+      "token": "m"
+    },
+    {
+      "id": 114,
+      "score": -5.485981767752487,
+      "token": "n"
+    },
+    {
+      "id": 115,
+      "score": -5.8224540043737,
+      "token": "o"
+    },
+    {
+      "id": 116,
+      "score": -6.584594056420596,
+      "token": "p"
+    },
+    {
+      "id": 117,
+      "score": -15.0,
+      "token": "q"
+    },
+    {
+      "id": 118,
+      "score": -5.757915483236128,
+      "token": "r"
+    },
+    {
+      "id": 119,
+      "score": -5.5860652263094694,
+      "token": "s"
+    },
+    {
+      "id": 120,
+      "score": -5.757915483236128,
+      "token": "t"
+    },
+    {
+      "id": 121,
+      "score": -6.333279628139691,
+      "token": "u"
+    },
+    {
+      "id": 122,
+      "score": -7.837357024915964,
+      "token": "v"
+    },
+    {
+      "id": 123,
+      "score": -7.837357024915964,
+      "token": "w"
+    },
+    {
+      "id": 124,
+      "score": -15.0,
+      "token": "x"
+    },
+    {
+      "id": 125,
+      "score": -7.144209844356019,
+      "token": "y"
+    },
+    {
+      "id": 126,
+      "score": -15.0,
+      "token": "z"
+    },
+    {
+      "id": 127,
+      "score": -15.0,
+      "token": "{"
+    },
+    {
+      "id": 128,
+      "score": -15.0,
+      "token": "|"
+    },
+    {
+      "id": 129,
+      "score": -15.0,
+      "token": "}"
+    },
+    {
+      "id": 130,
+      "score": -15.0,
+      "token": "~"
+    },
+    {
+      "id": 131,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x7F>"
+    },
+    {
+      "id": 132,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x80>"
+    },
+    {
+      "id": 133,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x81>"
+    },
+    {
+      "id": 134,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x82>"
+    },
+    {
+      "id": 135,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x83>"
+    },
+    {
+      "id": 136,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x84>"
+    },
+    {
+      "id": 137,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x85>"
+    },
+    {
+      "id": 138,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x86>"
+    },
+    {
+      "id": 139,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x87>"
+    },
+    {
+      "id": 140,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x88>"
+    },
+    {
+      "id": 141,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x89>"
+    },
+    {
+      "id": 142,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x8A>"
+    },
+    {
+      "id": 143,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x8B>"
+    },
+    {
+      "id": 144,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x8C>"
+    },
+    {
+      "id": 145,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x8D>"
+    },
+    {
+      "id": 146,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x8E>"
+    },
+    {
+      "id": 147,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x8F>"
+    },
+    {
+      "id": 148,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x90>"
+    },
+    {
+      "id": 149,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x91>"
+    },
+    {
+      "id": 150,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x92>"
+    },
+    {
+      "id": 151,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x93>"
+    },
+    {
+      "id": 152,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x94>"
+    },
+    {
+      "id": 153,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x95>"
+    },
+    {
+      "id": 154,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x96>"
+    },
+    {
+      "id": 155,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x97>"
+    },
+    {
+      "id": 156,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x98>"
+    },
+    {
+      "id": 157,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x99>"
+    },
+    {
+      "id": 158,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x9A>"
+    },
+    {
+      "id": 159,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x9B>"
+    },
+    {
+      "id": 160,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x9C>"
+    },
+    {
+      "id": 161,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x9D>"
+    },
+    {
+      "id": 162,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x9E>"
+    },
+    {
+      "id": 163,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0x9F>"
+    },
+    {
+      "id": 164,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xA0>"
+    },
+    {
+      "id": 165,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xA1>"
+    },
+    {
+      "id": 166,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xA2>"
+    },
+    {
+      "id": 167,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xA3>"
+    },
+    {
+      "id": 168,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xA4>"
+    },
+    {
+      "id": 169,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xA5>"
+    },
+    {
+      "id": 170,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xA6>"
+    },
+    {
+      "id": 171,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xA7>"
+    },
+    {
+      "id": 172,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xA8>"
+    },
+    {
+      "id": 173,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xA9>"
+    },
+    {
+      "id": 174,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xAA>"
+    },
+    {
+      "id": 175,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xAB>"
+    },
+    {
+      "id": 176,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xAC>"
+    },
+    {
+      "id": 177,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xAD>"
+    },
+    {
+      "id": 178,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xAE>"
+    },
+    {
+      "id": 179,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xAF>"
+    },
+    {
+      "id": 180,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xB0>"
+    },
+    {
+      "id": 181,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xB1>"
+    },
+    {
+      "id": 182,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xB2>"
+    },
+    {
+      "id": 183,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xB3>"
+    },
+    {
+      "id": 184,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xB4>"
+    },
+    {
+      "id": 185,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xB5>"
+    },
+    {
+      "id": 186,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xB6>"
+    },
+    {
+      "id": 187,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xB7>"
+    },
+    {
+      "id": 188,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xB8>"
+    },
+    {
+      "id": 189,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xB9>"
+    },
+    {
+      "id": 190,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xBA>"
+    },
+    {
+      "id": 191,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xBB>"
+    },
+    {
+      "id": 192,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xBC>"
+    },
+    {
+      "id": 193,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xBD>"
+    },
+    {
+      "id": 194,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xBE>"
+    },
+    {
+      "id": 195,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xBF>"
+    },
+    {
+      "id": 196,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xC0>"
+    },
+    {
+      "id": 197,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xC1>"
+    },
+    {
+      "id": 198,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xC2>"
+    },
+    {
+      "id": 199,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xC3>"
+    },
+    {
+      "id": 200,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xC4>"
+    },
+    {
+      "id": 201,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xC5>"
+    },
+    {
+      "id": 202,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xC6>"
+    },
+    {
+      "id": 203,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xC7>"
+    },
+    {
+      "id": 204,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xC8>"
+    },
+    {
+      "id": 205,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xC9>"
+    },
+    {
+      "id": 206,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xCA>"
+    },
+    {
+      "id": 207,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xCB>"
+    },
+    {
+      "id": 208,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xCC>"
+    },
+    {
+      "id": 209,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xCD>"
+    },
+    {
+      "id": 210,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xCE>"
+    },
+    {
+      "id": 211,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xCF>"
+    },
+    {
+      "id": 212,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xD0>"
+    },
+    {
+      "id": 213,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xD1>"
+    },
+    {
+      "id": 214,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xD2>"
+    },
+    {
+      "id": 215,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xD3>"
+    },
+    {
+      "id": 216,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xD4>"
+    },
+    {
+      "id": 217,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xD5>"
+    },
+    {
+      "id": 218,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xD6>"
+    },
+    {
+      "id": 219,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xD7>"
+    },
+    {
+      "id": 220,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xD8>"
+    },
+    {
+      "id": 221,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xD9>"
+    },
+    {
+      "id": 222,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xDA>"
+    },
+    {
+      "id": 223,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xDB>"
+    },
+    {
+      "id": 224,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xDC>"
+    },
+    {
+      "id": 225,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xDD>"
+    },
+    {
+      "id": 226,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xDE>"
+    },
+    {
+      "id": 227,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xDF>"
+    },
+    {
+      "id": 228,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xE0>"
+    },
+    {
+      "id": 229,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xE1>"
+    },
+    {
+      "id": 230,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xE2>"
+    },
+    {
+      "id": 231,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xE3>"
+    },
+    {
+      "id": 232,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xE4>"
+    },
+    {
+      "id": 233,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xE5>"
+    },
+    {
+      "id": 234,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xE6>"
+    },
+    {
+      "id": 235,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xE7>"
+    },
+    {
+      "id": 236,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xE8>"
+    },
+    {
+      "id": 237,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xE9>"
+    },
+    {
+      "id": 238,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xEA>"
+    },
+    {
+      "id": 239,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xEB>"
+    },
+    {
+      "id": 240,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xEC>"
+    },
+    {
+      "id": 241,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xED>"
+    },
+    {
+      "id": 242,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xEE>"
+    },
+    {
+      "id": 243,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xEF>"
+    },
+    {
+      "id": 244,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xF0>"
+    },
+    {
+      "id": 245,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xF1>"
+    },
+    {
+      "id": 246,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xF2>"
+    },
+    {
+      "id": 247,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xF3>"
+    },
+    {
+      "id": 248,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xF4>"
+    },
+    {
+      "id": 249,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xF5>"
+    },
+    {
+      "id": 250,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xF6>"
+    },
+    {
+      "id": 251,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xF7>"
+    },
+    {
+      "id": 252,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xF8>"
+    },
+    {
+      "id": 253,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xF9>"
+    },
+    {
+      "id": 254,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xFA>"
+    },
+    {
+      "id": 255,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xFB>"
+    },
+    {
+      "id": 256,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xFC>"
+    },
+    {
+      "id": 257,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xFD>"
+    },
+    {
+      "id": 258,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xFE>"
+    },
+    {
+      "id": 259,
+      "is_byte": true,
+      "score": -15.0,
+      "token": "<0xFF>"
+    },
+    {
+      "id": 260,
+      "score": -3.459466289786131,
+      "token": " is "
+    },
+    {
+      "id": 261,
+      "score": -3.970291913552122,
+      "token": " for "
+    },
+    {
+      "id": 262,
+      "score": -4.375757021660286,
+      "token": "ro"
+    },
+    {
+      "id": 263,
+      "score": -4.375757021660286,
+      "token": " and "
+    },
+    {
+      "id": 264,
+      "score": -4.375757021660286,
+      "token": "ment"
+    },
+    {
+      "id": 265,
+      "score": -4.375757021660286,
+      "token": "el"
+    },
+    {
+      "id": 266,
+      "score": -4.375757021660286,
+      "token": " language "
+    },
+    {
+      "id": 267,
+      "score": -4.375757021660286,
+      "token": " of "
+    },
+    {
+      "id": 268,
+      "score": -4.375757021660286,
+      "token": "abilit"
+    },
+    {
+      "id": 269,
+      "score": -4.375757021660286,
+      "token": "The "
+    },
+    {
+      "id": 270,
+      "score": -5.0689042022202315,
+      "token": " a"
+    },
+    {
+      "id": 271,
+      "score": -5.0689042022202315,
+      "token": "artificial"
+    },
+    {
+      "id": 272,
+      "score": -5.0689042022202315,
+      "token": "models"
+    },
+    {
+      "id": 273,
+      "score": -5.0689042022202315,
+      "token": "for"
+    },
+    {
+      "id": 274,
+      "score": -5.0689042022202315,
+      "token": "language."
+    },
+    {
+      "id": 275,
+      "score": -5.0689042022202315,
+      "token": "memory"
+    },
+    {
+      "id": 276,
+      "score": -5.0689042022202315,
+      "token": "lazy"
+    },
+    {
+      "id": 277,
+      "score": -5.0689042022202315,
+      "token": "jumps"
+    },
+    {
+      "id": 278,
+      "score": -5.0689042022202315,
+      "token": "fox"
+    },
+    {
+      "id": 279,
+      "score": -5.0689042022202315,
+      "token": "enables"
+    },
+    {
+      "id": 280,
+      "score": -5.0689042022202315,
+      "token": "dog."
+    },
+    {
+      "id": 281,
+      "score": -5.0689042022202315,
+      "token": " pro"
+    },
+    {
+      "id": 282,
+      "score": -5.0689042022202315,
+      "token": "One"
+    },
+    {
+      "id": 283,
+      "score": -5.0689042022202315,
+      "token": "processing"
+    },
+    {
+      "id": 284,
+      "score": -5.0689042022202315,
+      "token": "li"
+    },
+    {
+      "id": 285,
+      "score": -5.0689042022202315,
+      "token": "enterprise"
+    },
+    {
+      "id": 286,
+      "score": -5.0689042022202315,
+      "token": "smaller"
+    },
+    {
+      "id": 287,
+      "score": -5.0689042022202315,
+      "token": "tokens."
+    },
+    {
+      "id": 288,
+      "score": -5.0689042022202315,
+      "token": "to "
+    },
+    {
+      "id": 289,
+      "score": -5.0689042022202315,
+      "token": "C++"
+    },
+    {
+      "id": 290,
+      "score": -5.0689042022202315,
+      "token": "learning"
+    },
+    {
+      "id": 291,
+      "score": -5.0689042022202315,
+      "token": "computers"
+    },
+    {
+      "id": 292,
+      "score": -5.0689042022202315,
+      "token": "breaking"
+    },
+    {
+      "id": 293,
+      "score": -5.0689042022202315,
+      "token": "Java"
+    },
+    {
+      "id": 294,
+      "score": -5.0689042022202315,
+      "token": "units."
+    },
+    {
+      "id": 295,
+      "score": -5.0689042022202315,
+      "token": "human"
+    },
+    {
+      "id": 296,
+      "score": -5.0689042022202315,
+      "token": "quick"
+    },
+    {
+      "id": 297,
+      "score": -5.0689042022202315,
+      "token": "Unigram"
+    },
+    {
+      "id": 298,
+      "score": -5.0689042022202315,
+      "token": "assign"
+    },
+    {
+      "id": 299,
+      "score": -5.0689042022202315,
+      "token": "sunny"
+    },
+    {
+      "id": 300,
+      "score": -5.0689042022202315,
+      "token": "individual"
+    },
+    {
+      "id": 301,
+      "score": -5.0689042022202315,
+      "token": "Python"
+    },
+    {
+      "id": 302,
+      "score": -5.0689042022202315,
+      "token": "weather"
+    },
+    {
+      "id": 303,
+      "score": -5.0689042022202315,
+      "token": "today"
+    },
+    {
+      "id": 304,
+      "score": -5.0689042022202315,
+      "token": "testing"
+    },
+    {
+      "id": 305,
+      "score": -5.0689042022202315,
+      "token": "warm."
+    },
+    {
+      "id": 306,
+      "score": -5.0689042022202315,
+      "token": "used"
+    },
+    {
+      "id": 307,
+      "score": -5.0689042022202315,
+      "token": "requires"
+    },
+    {
+      "id": 308,
+      "score": -5.0689042022202315,
+      "token": "careful"
+    },
+    {
+      "id": 309,
+      "score": -5.0689042022202315,
+      "token": "known"
+    },
+    {
+      "id": 310,
+      "score": -5.0689042022202315,
+      "token": "simplicity"
+    },
+    {
+      "id": 311,
+      "score": -5.0689042022202315,
+      "token": "widely"
+    },
+    {
+      "id": 312,
+      "score": -5.0689042022202315,
+      "token": "over"
+    },
+    {
+      "id": 313,
+      "score": -5.0689042022202315,
+      "token": "Machine"
+    },
+    {
+      "id": 314,
+      "score": -5.0689042022202315,
+      "token": "subset"
+    },
+    {
+      "id": 315,
+      "score": -5.0689042022202315,
+      "token": "sentence"
+    },
+    {
+      "id": 316,
+      "score": -5.0689042022202315,
+      "token": "corpus"
+    },
+    {
+      "id": 317,
+      "score": -5.0689042022202315,
+      "token": "text"
+    },
+    {
+      "id": 318,
+      "score": -5.0689042022202315,
+      "token": "understand"
+    },
+    {
+      "id": 319,
+      "score": -5.0689042022202315,
+      "token": "Sample"
+    },
+    {
+      "id": 320,
+      "score": -5.0689042022202315,
+      "token": "time"
+    },
+    {
+      "id": 321,
+      "score": -5.0689042022202315,
+      "token": "n "
+    },
+    {
+      "id": 322,
+      "score": -5.0689042022202315,
+      "token": "resources."
+    },
+    {
+      "id": 323,
+      "score": -5.0689042022202315,
+      "token": "line"
+    },
+    {
+      "id": 324,
+      "score": -5.0689042022202315,
+      "token": "Natural"
+    },
+    {
+      "id": 325,
+      "score": -5.0689042022202315,
+      "token": " br"
+    },
+    {
+      "id": 326,
+      "score": -5.0689042022202315,
+      "token": "the"
+    },
+    {
+      "id": 327,
+      "score": -5.0689042022202315,
+      "token": "at"
+    },
+    {
+      "id": 328,
+      "score": -5.0689042022202315,
+      "token": "its"
+    },
+    {
+      "id": 329,
+      "score": -5.0689042022202315,
+      "token": " int"
+    },
+    {
+      "id": 330,
+      "score": -5.0689042022202315,
+      "token": " the "
+    },
+    {
+      "id": 331,
+      "score": -5.0689042022202315,
+      "token": "ence"
+    },
+    {
+      "id": 332,
+      "score": -5.0689042022202315,
+      "token": " p"
+    },
+    {
+      "id": 333,
+      "score": -5.0689042022202315,
+      "token": "age"
+    },
+    {
+      "id": 334,
+      "score": -5.0689042022202315,
+      "token": "atio"
+    },
+    {
+      "id": 335,
+      "score": -5.0689042022202315,
+      "token": " to "
+    },
+    {
+      "id": 336,
+      "score": -5.0689042022202315,
+      "token": "plic"
+    },
+    {
+      "id": 337,
+      "score": -5.0689042022202315,
+      "token": "pl"
+    },
+    {
+      "id": 338,
+      "score": -5.0689042022202315,
+      "token": "de"
+    },
+    {
+      "id": 339,
+      "score": -5.0689042022202315,
+      "token": "ss"
+    },
+    {
+      "id": 340,
+      "score": -5.0689042022202315,
+      "token": " in"
+    },
+    {
+      "id": 341,
+      "score": -5.0689042022202315,
+      "token": "own "
+    },
+    {
+      "id": 342,
+      "score": -5.0689042022202315,
+      "token": "man"
+    },
+    {
+      "id": 343,
+      "score": -5.0689042022202315,
+      "token": "oken"
+    },
+    {
+      "id": 344,
+      "score": -5.0689042022202315,
+      "token": "ns."
+    },
+    {
+      "id": 345,
+      "score": -5.0689042022202315,
+      "token": "ation"
+    },
+    {
+      "id": 346,
+      "score": -5.0689042022202315,
+      "token": "gram"
+    },
+    {
+      "id": 347,
+      "score": -5.0689042022202315,
+      "token": "er "
+    },
+    {
+      "id": 348,
+      "score": -5.0689042022202315,
+      "token": "s to "
+    },
+    {
+      "id": 349,
+      "score": -5.0689042022202315,
+      "token": "saves"
+    },
+    {
+      "id": 350,
+      "score": -5.0689042022202315,
+      "token": " process"
+    },
+    {
+      "id": 351,
+      "score": -5.0689042022202315,
+      "token": " and re"
+    },
+    {
+      "id": 352,
+      "score": -5.0689042022202315,
+      "token": "ing i"
+    }
+  ]
+}

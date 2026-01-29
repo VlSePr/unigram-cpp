@@ -1,0 +1,4 @@
+C:/Users/Volodymyr_Prudnikov/source/repos/BigLLM/UnigramTokeniser/build-debug/src/unigram_tokeniser.dir/MinSizeRel/tokenizer.obj
+C:/Users/Volodymyr_Prudnikov/source/repos/BigLLM/UnigramTokeniser/build-debug/src/unigram_tokeniser.dir/MinSizeRel/vocabulary.obj
+C:/Users/Volodymyr_Prudnikov/source/repos/BigLLM/UnigramTokeniser/build-debug/src/unigram_tokeniser.dir/MinSizeRel/trainer.obj
+C:/Users/Volodymyr_Prudnikov/source/repos/BigLLM/UnigramTokeniser/build-debug/src/unigram_tokeniser.dir/MinSizeRel/utf8_utils.obj

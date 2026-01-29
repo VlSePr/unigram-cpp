@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/Volodymyr_Prudnikov/source/repos/BigLLM/UnigramTokeniser/build-debug/tests/unigram_tests[1]_tests.cmake")
+  include("C:/Users/Volodymyr_Prudnikov/source/repos/BigLLM/UnigramTokeniser/build-debug/tests/unigram_tests[1]_tests.cmake")
+else()
+  add_test(unigram_tests_NOT_BUILT unigram_tests_NOT_BUILT)
+endif()
