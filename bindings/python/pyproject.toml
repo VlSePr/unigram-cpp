@@ -39,9 +39,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/UnigramTokeniser"
-Repository = "https://github.com/yourusername/UnigramTokeniser"
-Documentation = "https://github.com/yourusername/UnigramTokeniser/blob/main/README.md"
+Homepage = "https://github.com/VlSePr/unigram-cpp"
+Repository = "https://github.com/VlSePr/unigram-cpp"
+Documentation = "https://github.com/VlSePr/unigram-cpp/blob/main/README.md"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -51,7 +51,7 @@ python_functions = "test_*"
 
 [tool.black]
 line-length = 100
-target-version = ['py38', 'py39', 'py310', 'py311']
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
 
 [tool.mypy]
 python_version = "3.8"
