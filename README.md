@@ -154,14 +154,41 @@ cmake --build . --config Release
 
 See [benchmarks/README.md](benchmarks/README.md) for detailed benchmarking guide.
 
-### Python Bindings (Coming Soon)
+### Python Bindings
+
+Full Python bindings available using pybind11!
 
 ```python
 import unigram
 
-tokenizer = unigram.Tokenizer.load("model.json")
+# Configure and train
+config = unigram.TokenizerConfig()
+config.vocab_size = 32000
+trainer = unigram.Trainer(config)
+vocab = trainer.train_from_file("corpus.txt")
+
+# Create tokenizer
+tokenizer = unigram.Tokenizer(config)
+tokenizer.set_vocabulary(vocab)
+
+# Use it
 tokens = tokenizer.encode("Hello, world!")
+token_ids = tokenizer.encode_as_ids("Hello, world!")
+text = tokenizer.decode(tokens)
+
+# Save and load
+tokenizer.save("model.json")
+loaded = unigram.Tokenizer.from_file("model.json")
 ```
+
+**Installation:**
+
+```bash
+cd bindings/python
+pip install -e .
+```
+
+See [bindings/python/README.md](bindings/python/README.md) for complete documentation.
 
 ### Java Bindings (Coming Soon)
 
@@ -211,9 +238,9 @@ UnigramTokeniser/
 - CLI tool (train, tokenize, encode, benchmark)
 - **Benchmark suite** (CLI + Google Benchmark)
 - Test suite (27 tests passing)
+- **Python bindings** (complete with tests and examples)
 
 🚧 **In Progress:**
-- Python bindings (scaffolded)
 - Java bindings (scaffolded)
 
 ## Next Steps
@@ -222,7 +249,7 @@ See [ROADMAP.md](ROADMAP.md) for detailed development plan.
 
 ## License
 
-[Specify your license here]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 

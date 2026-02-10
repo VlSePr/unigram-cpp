@@ -1,0 +1,6 @@
+include README.md
+include CMakeLists.txt
+include bindings.cpp
+recursive-include ../../include/unigram *.h
+recursive-include ../../src *.cpp *.h
+global-exclude *.pyc __pycache__
