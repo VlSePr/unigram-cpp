@@ -96,35 +96,47 @@ class CMakeBuild(build_ext):
         # This is critical - it's what Python imports!
         import glob
         
-        # Search for the Python extension in the bindings/python directory
-        python_ext_patterns = [
-            Path(self.build_temp) / "bindings" / "python" / "unigram*.so",
-            Path(self.build_temp) / "bindings" / "python" / "unigram*.pyd",
-        ]
+        # Search for the Python extension module by walking the entire build tree
+        # pybind11 might place it in various locations depending on platform/CMake config
+        print(f"\n{'='*60}")
+        print(f"Searching for Python extension module in {self.build_temp}...")
+        print(f"{'='*60}")
         
         ext_found = False
-        for pattern in python_ext_patterns:
-            matching_files = glob.glob(str(pattern))
-            for ext_path in matching_files:
-                ext_path = Path(ext_path)
-                shutil.copy2(str(ext_path), extdir)
-                ext_found = True
-                print(f"Copied Python extension {ext_path.name} from {ext_path} to {extdir}")
-                break
+        ext_name_pattern = "unigram"  # Looking for unigram.*.so or unigram.*.pyd
+        
+        for root, dirs, files in os.walk(self.build_temp):
+            for file in files:
+                # Match unigram.*.so (Linux/Mac) or unigram.*.pyd (Windows)
+                # but NOT libunigram_tokeniser.so (that's the C++ library)
+                if (file.startswith(ext_name_pattern) and 
+                    (file.endswith('.so') or file.endswith('.pyd')) and
+                    not file.startswith('lib')):
+                    ext_path = Path(root) / file
+                    dest_path = Path(extdir) / file
+                    shutil.copy2(str(ext_path), str(dest_path))
+                    ext_found = True
+                    print(f"✓ Copied Python extension: {file}")
+                    print(f"  From: {ext_path}")
+                    print(f"  To:   {dest_path}")
+                    break
             if ext_found:
                 break
         
         if not ext_found:
+            print(f"\n{'='*60}")
             print(f"ERROR: Could not find Python extension module!")
-            print(f"\nContents of build directory {self.build_temp}:")
+            print(f"{'='*60}")
+            print(f"Searched in: {self.build_temp}")
+            print(f"Looking for: {ext_name_pattern}.*.so or {ext_name_pattern}.*.pyd")
+            print(f"\nAll .so/.pyd/.dll files found in build directory:")
             for root, dirs, files in os.walk(self.build_temp):
-                level = root.replace(str(self.build_temp), '').count(os.sep)
-                indent = ' ' * 2 * level
-                print(f'{indent}{os.path.basename(root)}/')
-                subindent = ' ' * 2 * (level + 1)
-                for file in files[:10]:  # Limit output
+                for file in files:
                     if file.endswith(('.so', '.dll', '.pyd')):
-                        print(f'{subindent}{file}')
+                        rel_path = Path(root).relative_to(self.build_temp)
+                        print(f"  {rel_path / file}")
+            print(f"{'='*60}\n")
+            raise RuntimeError("Python extension module not found after build!")
 
 
 setup(
