@@ -1,34 +1,40 @@
 # Fixes for Colab Installation Issue
 
 ## Problem
-When running `pip show -f unigram-tokeniser` in Colab, the compiled extension files were missing:
-- ❌ Missing: `unigram_tokeniser/unigram.*.so` (compiled Python extension)
-- ❌ Missing: `unigram_tokeniser/libunigram_tokeniser.so` (C++ shared library)
+When running `pip show -f unigram-tokeniser` in Colab, the Python extension module was missing:
+- ❌ Missing: `unigram_tokeniser/unigram.cpython-312-x86_64-linux-gnu.so` (Python binding module)
+- ✅ Present: `unigram_tokeniser/libunigram_tokeniser.so` (C++ shared library) 
+- ✅ Present: `unigram_tokeniser/__init__.py`
 
-Only metadata and `__init__.py` were installed.
+The `__init__.py` tries to `from .unigram import ...` but the `unigram` module file doesn't exist, causing:
+```
+ModuleNotFoundError: No module named 'unigram_tokeniser.unigram'
+```
 
 ## Root Cause
-The `setup.py` had hardcoded paths for finding the shared library that only worked on Windows:
-- Windows: `build/temp.win-amd64-cpython-312/Release/bin/Release/unigram_tokeniser.dll`
-- Linux: Path varies, typically `build/temp.linux-x86_64-cpython-312/lib/libunigram_tokeniser.so`
+The `setup.py` had code to search for and copy `libunigram_tokeniser.so`, but it **did not search for or copy the Python extension module** that pybind11 creates. This Python extension module is what `__init__.py` tries to import.
+
+The build process creates TWO separate files:
+1. `libunigram_tokeniser.so` - the C++ shared library (was being copied ✅)
+2. `unigram.cpython-*.so` - the Python binding module created by pybind11 (was NOT being copied ❌)
 
 ## Fixes Applied
 
 ### 1. Enhanced setup.py (`bindings/python/setup.py`)
 **Changes:**
-- Added multiple search paths for the shared library
-- Added platform-specific path handling
-- Added debug output showing where it's looking and what it finds
-- Now searches these locations on Linux:
-  - `build/temp.DIR/bin/libunigram_tokeniser.so`
-  - `build/temp.DIR/lib/libunigram_tokeniser.so`
-  - `build/temp.DIR/src/libunigram_tokeniser.so`
+- ✅ Added explicit search and copy for the Python extension module
+- ✅ Searches in `build/temp.DIR/bindings/python/unigram*.so`
+- ✅ Searches for both `.so` (Linux) and `.pyd` (Windows) extensions
+- ✅ Prints diagnostic info showing what's being copied
+- ✅ Shows error message if Python extension module is not found
+- ✅ Lists build directory contents for debugging if module is missing
 
-**The fix will now:**
-1. Build the C++ library and Python extension
-2. Search multiple locations for `libunigram_tokeniser.so`
-3. Copy it alongside the `.pyd`/`.so` extension module
-4. Print diagnostic info if not found
+**The fix now:**
+1. Builds the C++ library and Python extension via CMake
+2. Searches for and copies `libunigram_tokeniser.so` (existing functionality)
+3. **NEW:** Searches for and copies `unigram.cpython-*.so` (the Python module!)
+4. Prints confirmation when both files are copied
+5. Shows helpful diagnostics if either file is missing
 
 ### 2. Updated Tests (`bindings/python/tests/test_tokenizer.py`)
 **Changes:**

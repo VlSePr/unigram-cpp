@@ -91,7 +91,31 @@ class CMakeBuild(build_ext):
             print(f"Warning: Could not find {lib_name} in expected locations:")
             for p in search_paths:
                 print(f"  - {p}")
-            # List what's actually in build_temp for debugging
+        
+        # Copy the Python extension module (the actual pybind11 module)
+        # This is critical - it's what Python imports!
+        import glob
+        
+        # Search for the Python extension in the bindings/python directory
+        python_ext_patterns = [
+            Path(self.build_temp) / "bindings" / "python" / "unigram*.so",
+            Path(self.build_temp) / "bindings" / "python" / "unigram*.pyd",
+        ]
+        
+        ext_found = False
+        for pattern in python_ext_patterns:
+            matching_files = glob.glob(str(pattern))
+            for ext_path in matching_files:
+                ext_path = Path(ext_path)
+                shutil.copy2(str(ext_path), extdir)
+                ext_found = True
+                print(f"Copied Python extension {ext_path.name} from {ext_path} to {extdir}")
+                break
+            if ext_found:
+                break
+        
+        if not ext_found:
+            print(f"ERROR: Could not find Python extension module!")
             print(f"\nContents of build directory {self.build_temp}:")
             for root, dirs, files in os.walk(self.build_temp):
                 level = root.replace(str(self.build_temp), '').count(os.sep)

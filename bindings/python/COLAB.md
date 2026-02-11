@@ -228,6 +228,50 @@ This is the **most common issue** in Colab. The installation completed successfu
 - But the running Python interpreter doesn't automatically rescan for new modules
 - Restarting the runtime = starting fresh with the new module available
 
+**Error: "ModuleNotFoundError: No module named 'unigram_tokeniser.unigram'"**
+
+This is a **different issue** - the package installs but the Python extension module is missing.
+
+**Diagnosis:**
+```python
+# Check what files were actually installed
+!pip show -f unigram-tokeniser
+```
+
+If you see:
+```
+Files:
+  unigram_tokeniser/__init__.py
+  unigram_tokeniser/libunigram_tokeniser.so
+```
+
+But **missing** something like `unigram_tokeniser/unigram.cpython-312-x86_64-linux-gnu.so`, then the Python extension module didn't get installed. The package needs BOTH files:
+- `libunigram_tokeniser.so` - the core C++ library
+- `unigram.cpython-*.so` - the Python binding module (THIS IS WHAT'S MISSING!)
+
+**✓ Solution:**
+
+This was a bug in setup.py that has been fixed. Update to the latest version:
+
+```python
+%cd /content
+!rm -rf unigram-cpp
+!git clone https://github.com/VlSePr/unigram-cpp.git
+%cd unigram-cpp/bindings/python
+
+# Install with verbose output to see what's happening
+!pip install --force-reinstall --no-cache-dir --verbose .
+
+# Verify BOTH files are present
+!pip show -f unigram-tokeniser | grep -E "(unigram|libunigram)"
+
+# You should see BOTH:
+#   unigram_tokeniser/unigram.cpython-XXX-linux-gnu.so    ← This is the Python module!
+#   unigram_tokeniser/libunigram_tokeniser.so             ← This is the C++ library
+```
+
+If you still only see `libunigram_tokeniser.so`, check the build output for errors. The Python extension module should be built during the CMake compilation step.
+
 **Alternative diagnostic steps** (if restart doesn't work):
 
 ```python
