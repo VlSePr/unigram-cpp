@@ -1,6 +1,7 @@
 import os
 import sys
 import subprocess
+import shutil
 from pathlib import Path
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
@@ -59,10 +60,23 @@ class CMakeBuild(build_ext):
             ["cmake", "--build", "."] + build_args, 
             cwd=self.build_temp
         )
+        
+        # Copy the unigram_tokeniser DLL/SO alongside the Python extension
+        cfg = "Debug" if self.debug else "Release"
+        if sys.platform.startswith("win"):
+            dll_name = "unigram_tokeniser.dll"
+            dll_path = Path(self.build_temp) / "bin" / cfg / dll_name
+        else:
+            dll_name = "libunigram_tokeniser.so"
+            dll_path = Path(self.build_temp) / "bin" / dll_name
+        
+        if dll_path.exists():
+            shutil.copy2(str(dll_path), extdir)
 
 
 setup(
-    ext_modules=[CMakeExtension("unigram")],
+    ext_modules=[CMakeExtension("unigram_tokeniser.unigram")],
     cmdclass={"build_ext": CMakeBuild},
+    packages=["unigram_tokeniser"],
     zip_safe=False,
 )
