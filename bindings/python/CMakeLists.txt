@@ -27,6 +27,4 @@ set_target_properties(unigram_py PROPERTIES
 )
 
 # Installation for Python package
-install(TARGETS unigram_py
-    LIBRARY DESTINATION ${Python_SITEARCH}
-)
+install(TARGETS unigram_py DESTINATION .)

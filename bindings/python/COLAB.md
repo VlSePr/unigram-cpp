@@ -9,30 +9,65 @@ Just run these cells in your Colab notebook:
 ### Cell 1: Install
 ```python
 # Remove any existing installation (in case you're re-running)
+%cd /content
 !rm -rf unigram-cpp
 
 # Clone repository
 !git clone https://github.com/VlSePr/unigram-cpp.git
 
 # Navigate to Python bindings directory
-%cd unigram-cpp/bindings/python
+# Note: If your repo has nested structure, adjust path accordingly
+%cd /content/unigram-cpp/bindings/python
+
+# Check we're in the right place
+!ls -la
+print("Current directory:", !pwd)
 
 # Install (this automatically compiles C++ code using CMake)
-!pip install -q .
+# Removed -q flag so you can see build progress and any errors
+!pip install .
 
+# Verify installation
+!pip show unigram-tokeniser
+
+print("\n" + "="*50)
 print("✓ Installation complete!")
+print("="*50)
+print("⚠️  IMPORTANT: You MUST restart the runtime now:")
+print("   1. Go to: Runtime → Restart Runtime")
+print("   2. After restart, run Cell 2")
+print("="*50)
 ```
 
-### Alternative: One-Line Install
+### Cell 2: Import and Test (Run AFTER restarting runtime)
 ```python
-# If repo already exists, just reinstall
-%cd /content
-!rm -rf unigram-cpp && git clone https://github.com/VlSePr/unigram-cpp.git && cd unigram-cpp/bindings/python && pip install -q .
-```
+# ⚠️ DID YOU RESTART THE RUNTIME after Cell 1?
+# If not, go to: Runtime → Restart Runtime, then come back here
 
-### Cell 2: Test Installation
-```python
-import unigram
+# Try importing
+try:
+    import unigram
+    print("✓ Import successful!")
+except ModuleNotFoundError as e:
+    print("✗ Import failed!")
+    print("\nDiagnostics:")
+    print("=" * 50)
+    
+    # Check if package is installed
+    import subprocess
+    result = subprocess.run(['pip', 'show', 'unigram-tokeniser'], 
+                          capture_output=True, text=True)
+    if result.returncode == 0:
+        print("Package IS installed:")
+        print(result.stdout)
+        print("\n⚠️  You MUST restart the runtime:")
+        print("   Runtime → Restart Runtime")
+        print("   Then re-run this cell")
+    else:
+        print("Package is NOT installed!")
+        print("Please re-run Cell 1")
+    
+    raise
 
 # Quick test
 config = unigram.TokenizerConfig()
@@ -46,7 +81,7 @@ tokenizer = unigram.Tokenizer(config)
 tokenizer.set_vocabulary(vocab)
 
 tokens = tokenizer.encode("hello world")
-print(f"Tokens: {tokens}")
+print(f"\nTokens: {tokens}")
 print(f"✓ Everything works!")
 ```
 
@@ -171,6 +206,57 @@ You're in the wrong directory. Make sure you're in `bindings/python`:
 !pip install .
 ```
 
+**Error: "ModuleNotFoundError: No module named 'unigram'" after installation**
+
+This is the **most common issue** in Colab. The installation completed successfully, but Python's runtime doesn't know about the new module yet.
+
+**✓ Solution (Simple - ALWAYS WORKS):**
+
+1. After Cell 1 completes, **IMMEDIATELY** restart the runtime:
+   - Click: `Runtime → Restart Runtime`
+   - Confirm the restart
+2. Run Cell 2 (the import cell) - it will now work
+
+**Why does this happen?**
+- Colab keeps Python running in the background
+- When you `pip install`, it adds files to disk
+- But the running Python interpreter doesn't automatically rescan for new modules
+- Restarting the runtime = starting fresh with the new module available
+
+**Alternative diagnostic steps** (if restart doesn't work):
+
+```python
+# Step 1: Verify package is installed
+!pip show unigram-tokeniser
+# You should see: Name: unigram-tokeniser, Version: x.x.x
+
+# Step 2: Find where it's installed
+!pip show -f unigram-tokeniser | grep Location
+
+# Step 3: Check if the .so file exists
+!find /usr/local/lib -name "*unigram*.so" 2>/dev/null
+
+# Step 4: Try manual import with explicit path
+import sys
+sys.path.insert(0, '/usr/local/lib/python3.10/site-packages')
+import unigram
+
+# If Step 4 works, the issue is just sys.path
+# If Step 4 fails, the installation had errors - check Cell 1 output
+```
+
+**If nothing works:**
+```python
+# Nuclear option: Fresh install with full output
+%cd /content
+!rm -rf unigram-cpp
+!git clone https://github.com/VlSePr/unigram-cpp.git
+%cd unigram-cpp/bindings/python
+!pip install --force-reinstall --no-cache-dir --verbose .
+# Look for any errors in the output above
+# Then restart runtime and try again
+```
+
 **CMake Issues**
 
 Sometimes Colab might be missing CMake or have an old version. Try:
@@ -245,18 +331,37 @@ You don't need to manually run CMake commands - it's all handled for you!
 
 ## Complete Colab Notebook Template
 
+**IMPORTANT:** You MUST restart the runtime after Cell 1, before running Cell 2!
+
 ```python
 # ============================================
 # Cell 1: Install
 # ============================================
+%cd /content
+!rm -rf unigram-cpp
 !git clone https://github.com/VlSePr/unigram-cpp.git
 %cd unigram-cpp/bindings/python
-!pip install -q .
+!pip install .
+!pip show unigram-tokeniser
+
+print("\n" + "="*50)
+print("✓ Installation complete!")
+print("="*50)
+print("⚠️  NOW: Runtime → Restart Runtime")
+print("     Then continue with Cell 2")
+print("="*50)
 
 # ============================================
-# Cell 2: Import and Configure
+# ⚠️⚠️⚠️ STOP HERE - RESTART RUNTIME ⚠️⚠️⚠️
+# Go to: Runtime → Restart Runtime
+# Then run Cell 2 below
+# ============================================
+
+# ============================================
+# Cell 2: Import and Configure (Run AFTER restarting runtime)
 # ============================================
 import unigram
+print("✓ Import successful!")
 
 config = unigram.TokenizerConfig()
 config.vocab_size = 1000
