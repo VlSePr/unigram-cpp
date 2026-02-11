@@ -7,19 +7,25 @@ import os
 
 
 try:
-    import unigram
-except ImportError:
-    pytest.skip("unigram module not built", allow_module_level=True)
+    from unigram_tokeniser import (
+        Tokenizer, TokenizerConfig, Trainer, Vocabulary,
+        UNK_TOKEN, BOS_TOKEN, EOS_TOKEN, PAD_TOKEN,
+        UNK_TOKEN_ID, BOS_TOKEN_ID, EOS_TOKEN_ID, PAD_TOKEN_ID,
+    )
+    import unigram_tokeniser
+    unigram = unigram_tokeniser.unigram  # For backward compatibility
+except ImportError as e:
+    pytest.skip(f"unigram_tokeniser module not built: {e}", allow_module_level=True)
 
 
 class TestTokenizerConfig:
     def test_default_config(self):
-        config = unigram.TokenizerConfig()
+        config = TokenizerConfig()
         assert config.vocab_size == 32000
         assert config.num_iterations > 0
         
     def test_config_modification(self):
-        config = unigram.TokenizerConfig()
+        config = TokenizerConfig()
         config.vocab_size = 16000
         config.byte_fallback = True
         assert config.vocab_size == 16000
@@ -28,22 +34,22 @@ class TestTokenizerConfig:
 
 class TestVocabulary:
     def test_empty_vocabulary(self):
-        vocab = unigram.Vocabulary()
+        vocab = Vocabulary()
         assert len(vocab) == 0
         
     def test_add_token(self):
-        vocab = unigram.Vocabulary()
+        vocab = Vocabulary()
         token_id = vocab.add_token("hello", -1.5)
         assert vocab.size() > 0
         assert vocab.contains("hello")
         
     def test_get_token(self):
-        vocab = unigram.Vocabulary()
+        vocab = Vocabulary()
         token_id = vocab.add_token("world", -2.0)
         assert vocab.get_token(token_id) == "world"
         
     def test_get_score(self):
-        vocab = unigram.Vocabulary()
+        vocab = Vocabulary()
         score = -1.5
         token_id = vocab.add_token("test", score)
         assert abs(vocab.get_score(token_id) - score) < 0.001
@@ -51,17 +57,17 @@ class TestVocabulary:
 
 class TestTrainer:
     def test_trainer_creation(self):
-        config = unigram.TokenizerConfig()
+        config = TokenizerConfig()
         config.vocab_size = 1000
-        trainer = unigram.Trainer(config)
+        trainer = Trainer(config)
         assert trainer.config().vocab_size == 1000
         
     def test_train_from_text(self):
-        config = unigram.TokenizerConfig()
+        config = TokenizerConfig()
         config.vocab_size = 100
         config.num_iterations = 2
         
-        trainer = unigram.Trainer(config)
+        trainer = Trainer(config)
         corpus = "hello world " * 100 + "test tokenizer " * 50
         
         vocab = trainer.train(corpus)
@@ -69,7 +75,7 @@ class TestTrainer:
         assert vocab.contains(" ")  # Space should be in vocabulary
         
     def test_train_from_file(self):
-        config = unigram.TokenizerConfig()
+        config = TokenizerConfig()
         config.vocab_size = 100
         config.num_iterations = 2
         
@@ -80,7 +86,7 @@ class TestTrainer:
             temp_file = f.name
             
         try:
-            trainer = unigram.Trainer(config)
+            trainer = Trainer(config)
             vocab = trainer.train_from_file(temp_file)
             assert vocab.size() > 0
         finally:
@@ -90,20 +96,20 @@ class TestTrainer:
 class TestTokenizer:
     def setup_method(self):
         """Setup a trained tokenizer for tests"""
-        config = unigram.TokenizerConfig()
+        config = TokenizerConfig()
         config.vocab_size = 200
         config.num_iterations = 2
         
-        trainer = unigram.Trainer(config)
+        trainer = Trainer(config)
         corpus = "hello world " * 100 + "test tokenizer " * 50 + "python bindings " * 30
         
         self.vocab = trainer.train(corpus)
-        self.tokenizer = unigram.Tokenizer(config)
+        self.tokenizer = Tokenizer(config)
         self.tokenizer.set_vocabulary(self.vocab)
         
     def test_tokenizer_creation(self):
-        config = unigram.TokenizerConfig()
-        tokenizer = unigram.Tokenizer(config)
+        config = TokenizerConfig()
+        tokenizer = Tokenizer(config)
         assert tokenizer is not None
         
     def test_encode(self):
@@ -146,8 +152,8 @@ class TestTokenizer:
             assert os.path.exists(temp_file)
             
             # Load tokenizer
-            config = unigram.TokenizerConfig()
-            loaded_tokenizer = unigram.Tokenizer(config)
+            config = TokenizerConfig()
+            loaded_tokenizer = Tokenizer(config)
             loaded_tokenizer.load(temp_file)
             
             # Test that loaded tokenizer works
@@ -169,7 +175,7 @@ class TestTokenizer:
             self.tokenizer.save(temp_file)
             
             # Load using from_file static method
-            loaded_tokenizer = unigram.Tokenizer.from_file(temp_file)
+            loaded_tokenizer = Tokenizer.from_file(temp_file)
             
             # Test that loaded tokenizer works
             text = "hello world"
@@ -183,24 +189,24 @@ class TestTokenizer:
 
 class TestConstants:
     def test_special_tokens(self):
-        assert unigram.UNK_TOKEN == "<unk>"
-        assert unigram.BOS_TOKEN == "<s>"
-        assert unigram.EOS_TOKEN == "</s>"
-        assert unigram.PAD_TOKEN == "<pad>"
+        assert UNK_TOKEN == "<unk>"
+        assert BOS_TOKEN == "<s>"
+        assert EOS_TOKEN == "</s>"
+        assert PAD_TOKEN == "<pad>"
         
     def test_special_token_ids(self):
-        assert isinstance(unigram.UNK_TOKEN_ID, int)
-        assert isinstance(unigram.BOS_TOKEN_ID, int)
-        assert isinstance(unigram.EOS_TOKEN_ID, int)
-        assert isinstance(unigram.PAD_TOKEN_ID, int)
-        assert unigram.UNK_TOKEN_ID == 0
+        assert isinstance(UNK_TOKEN_ID, int)
+        assert isinstance(BOS_TOKEN_ID, int)
+        assert isinstance(EOS_TOKEN_ID, int)
+        assert isinstance(PAD_TOKEN_ID, int)
+        assert UNK_TOKEN_ID == 0
 
 
 class TestVersionInfo:
     def test_version_exists(self):
-        assert hasattr(unigram, '__version__')
-        assert isinstance(unigram.__version__, str)
-        assert len(unigram.__version__) > 0
+        assert hasattr(unigram_tokeniser, '__version__')
+        assert isinstance(unigram_tokeniser.__version__, str)
+        assert len(unigram_tokeniser.__version__) > 0
 
 
 if __name__ == "__main__":

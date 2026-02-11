@@ -61,17 +61,46 @@ class CMakeBuild(build_ext):
             cwd=self.build_temp
         )
         
-        # Copy the unigram_tokeniser DLL/SO alongside the Python extension
-        cfg = "Debug" if self.debug else "Release"
+        # Copy the unigram_tokeniser shared library alongside the Python extension
+        # Search for the library in multiple possible locations
         if sys.platform.startswith("win"):
-            dll_name = "unigram_tokeniser.dll"
-            dll_path = Path(self.build_temp) / "bin" / cfg / dll_name
+            lib_name = "unigram_tokeniser.dll"
+            search_paths = [
+                Path(self.build_temp) / "bin" / cfg / lib_name,
+                Path(self.build_temp) / "bin" / lib_name,
+                Path(self.build_temp) / "lib" / cfg / lib_name,
+            ]
         else:
-            dll_name = "libunigram_tokeniser.so"
-            dll_path = Path(self.build_temp) / "bin" / dll_name
+            lib_name = "libunigram_tokeniser.so"
+            search_paths = [
+                Path(self.build_temp) / "bin" / lib_name,
+                Path(self.build_temp) / "lib" / lib_name,
+                Path(self.build_temp) / "src" / lib_name,
+            ]
         
-        if dll_path.exists():
-            shutil.copy2(str(dll_path), extdir)
+        # Find and copy the library
+        lib_found = False
+        for lib_path in search_paths:
+            if lib_path.exists():
+                shutil.copy2(str(lib_path), extdir)
+                lib_found = True
+                print(f"Copied {lib_name} from {lib_path} to {extdir}")
+                break
+        
+        if not lib_found:
+            print(f"Warning: Could not find {lib_name} in expected locations:")
+            for p in search_paths:
+                print(f"  - {p}")
+            # List what's actually in build_temp for debugging
+            print(f"\nContents of build directory {self.build_temp}:")
+            for root, dirs, files in os.walk(self.build_temp):
+                level = root.replace(str(self.build_temp), '').count(os.sep)
+                indent = ' ' * 2 * level
+                print(f'{indent}{os.path.basename(root)}/')
+                subindent = ' ' * 2 * (level + 1)
+                for file in files[:10]:  # Limit output
+                    if file.endswith(('.so', '.dll', '.pyd')):
+                        print(f'{subindent}{file}')
 
 
 setup(

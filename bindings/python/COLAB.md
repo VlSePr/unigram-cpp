@@ -46,8 +46,13 @@ print("="*50)
 
 # Try importing
 try:
-    import unigram
+    import unigram_tokeniser
     print("✓ Import successful!")
+    print(f"Version: {unigram_tokeniser.__version__}")
+    print(f"\nAvailable classes:")
+    for name in ['Tokenizer', 'Trainer', 'Vocabulary', 'TokenizerConfig']:
+        if hasattr(unigram_tokeniser, name):
+            print(f"  ✓ {name}")
 except ModuleNotFoundError as e:
     print("✗ Import failed!")
     print("\nDiagnostics:")
@@ -70,14 +75,14 @@ except ModuleNotFoundError as e:
     raise
 
 # Quick test
-config = unigram.TokenizerConfig()
+config = unigram_tokeniser.TokenizerConfig()
 config.vocab_size = 500
 config.num_iterations = 2
 
-trainer = unigram.Trainer(config)
+trainer = unigram_tokeniser.Trainer(config)
 vocab = trainer.train("hello world test data " * 100)
 
-tokenizer = unigram.Tokenizer(config)
+tokenizer = unigram_tokeniser.Tokenizer(config)
 tokenizer.set_vocabulary(vocab)
 
 tokens = tokenizer.encode("hello world")
@@ -90,10 +95,10 @@ print(f"✓ Everything works!")
 ### Training and Using a Tokenizer
 
 ```python
-import unigram
+import unigram_tokeniser
 
 # 1. Configure
-config = unigram.TokenizerConfig()
+config = unigram_tokeniser.TokenizerConfig()
 config.vocab_size = 1000
 config.num_iterations = 3
 config.byte_fallback = True
@@ -105,13 +110,13 @@ Machine learning is fascinating.
 Python makes data science accessible.
 """ * 50  # Repeat for sufficient training data
 
-trainer = unigram.Trainer(config)
+trainer = unigram_tokeniser.Trainer(config)
 vocab = trainer.train(corpus)
 
 print(f"Trained vocabulary size: {vocab.size()}")
 
 # 3. Create tokenizer
-tokenizer = unigram.Tokenizer(config)
+tokenizer = unigram_tokeniser.Tokenizer(config)
 tokenizer.set_vocabulary(vocab)
 
 # 4. Use it
@@ -142,18 +147,18 @@ from google.colab import drive
 drive.mount('/content/drive')
 
 # Train from your file
-trainer = unigram.Trainer(config)
+trainer = unigram_tokeniser.Trainer(config)
 vocab = trainer.train_from_file('/content/drive/MyDrive/corpus.txt')
 
 # Create and use tokenizer
-tokenizer = unigram.Tokenizer(config)
+tokenizer = unigram_tokeniser.Tokenizer(config)
 tokenizer.set_vocabulary(vocab)
 
 # Save model
 tokenizer.save('/content/drive/MyDrive/my_tokenizer.json')
 
 # Load it later
-loaded = unigram.Tokenizer.from_file('/content/drive/MyDrive/my_tokenizer.json')
+loaded = unigram_tokeniser.Tokenizer.from_file('/content/drive/MyDrive/my_tokenizer.json')
 ```
 
 ### Training from Wikipedia or Downloaded Data
@@ -163,17 +168,17 @@ loaded = unigram.Tokenizer.from_file('/content/drive/MyDrive/my_tokenizer.json')
 !wget https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
 
 # Train on it
-config = unigram.TokenizerConfig()
+config = unigram_tokeniser.TokenizerConfig()
 config.vocab_size = 2000
 config.num_iterations = 4
 
-trainer = unigram.Trainer(config)
+trainer = unigram_tokeniser.Trainer(config)
 vocab = trainer.train_from_file('input.txt')
 
 print(f"Vocabulary size: {vocab.size()}")
 
 # Use the trained tokenizer
-tokenizer = unigram.Tokenizer(config)
+tokenizer = unigram_tokeniser.Tokenizer(config)
 tokenizer.set_vocabulary(vocab)
 
 sample = "To be or not to be, that is the question."
@@ -274,7 +279,7 @@ Sometimes Colab might be missing CMake or have an old version. Try:
 
 ```python
 import unigram
-print(f"Version: {unigram.__version__}")
+print(f"Version: {unigram_tokeniser.__version__}")
 print(f"Available: {dir(unigram)}")
 ```
 
@@ -315,7 +320,7 @@ drive.mount('/content/drive')
 tokenizer.save('/content/drive/MyDrive/tokenizer.json')
 
 # Later, in a new session:
-tokenizer = unigram.Tokenizer.from_file('/content/drive/MyDrive/tokenizer.json')
+tokenizer = unigram_tokeniser.Tokenizer.from_file('/content/drive/MyDrive/tokenizer.json')
 ```
 
 ## Why pip install Works
@@ -363,7 +368,7 @@ print("="*50)
 import unigram
 print("✓ Import successful!")
 
-config = unigram.TokenizerConfig()
+config = unigram_tokeniser.TokenizerConfig()
 config.vocab_size = 1000
 config.num_iterations = 3
 config.byte_fallback = True
@@ -372,14 +377,14 @@ config.byte_fallback = True
 # Cell 3: Train
 # ============================================
 corpus = "Your training text here " * 100
-trainer = unigram.Trainer(config)
+trainer = unigram_tokeniser.Trainer(config)
 vocab = trainer.train(corpus)
 print(f"Vocabulary size: {vocab.size()}")
 
 # ============================================
 # Cell 4: Create Tokenizer
 # ============================================
-tokenizer = unigram.Tokenizer(config)
+tokenizer = unigram_tokeniser.Tokenizer(config)
 tokenizer.set_vocabulary(vocab)
 
 # ============================================
@@ -404,3 +409,4 @@ tokenizer.save('/content/drive/MyDrive/my_tokenizer.json')
 ```
 
 That's it! Happy tokenizing in Colab! 🚀
+
