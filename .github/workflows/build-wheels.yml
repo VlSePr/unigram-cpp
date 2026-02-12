@@ -22,7 +22,7 @@ jobs:
           submodules: recursive
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.16.2
+        uses: pypa/cibuildwheel@v2.17.0
         env:
           # Build for Python 3.8-3.12
           CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
@@ -44,6 +44,7 @@ jobs:
           CIBW_TEST_COMMAND: python -c "import unigram_tokeniser; print(unigram_tokeniser.__version__)"
         with:
           package-dir: bindings/python
+          output-dir: wheelhouse
 
       - uses: actions/upload-artifact@v4
         with:
