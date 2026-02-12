@@ -28,8 +28,15 @@ jobs:
           CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
           # Skip 32-bit builds and musl (for simplicity)
           CIBW_SKIP: "*-win32 *-manylinux_i686 *-musllinux_*"
-          # Install CMake in the build environment
-          CIBW_BEFORE_ALL_LINUX: yum install -y cmake3 || apt-get install -y cmake
+          # Use newer manylinux images that have cmake pre-installed
+          CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
+          CIBW_MANYLINUX_AARCH64_IMAGE: manylinux2014
+          # Install CMake in the build environment (cmake3 is already available in manylinux2014)
+          CIBW_BEFORE_ALL_LINUX: |
+            # manylinux2014 comes with cmake3, just ensure it's available
+            which cmake3 && ln -sf $(which cmake3) /usr/local/bin/cmake || true
+            # Verify cmake is available
+            cmake --version || (yum install -y cmake3 && ln -sf $(which cmake3) /usr/local/bin/cmake)
           CIBW_BEFORE_ALL_MACOS: brew install cmake
           # Build from bindings/python directory
           CIBW_BUILD_FRONTEND: pip
